@@ -15,10 +15,8 @@ class _CadastroUsuarioScreenState extends State<CadastroUsuarioScreen> {
 
   void cadastrarUsuario() {
     if (tipoCadastro == 'Cliente') {
-      // Lógica para cadastrar um cliente
       print('Cadastrando cliente: Nome: $nome, Email: $email, Senha: $senha, Telefone: $telefone');
     } else if (tipoCadastro == 'Profissional') {
-      // Lógica para cadastrar um profissional
       print('Cadastrando profissional: Nome: $nome, Email: $email, Senha: $senha, Telefone: $telefone, Código Regional: $codigoRegional');
     }
   }
