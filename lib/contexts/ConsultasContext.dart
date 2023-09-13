@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:prova_01/components/Consultas.dart';
 import 'package:provider/provider.dart';
 
 class Consulta {
@@ -15,14 +14,14 @@ class Consulta {
     required this.descricao,
     required this.horaData,
     required this.nomeCliente,
-    required this.nomeProfissional, 
-  }): id = DateTime._maxMillisecondsSinceEpoch;
+    required this.nomeProfissional,
+  }) : id = DateTime.now().millisecondsSinceEpoch;
 }
 
 class ConsultasContext extends ChangeNotifier {
-  List<Consultas> consultas = [];
+  List<Consulta> consultas = [];
 
-  void adicionarConsultas(Consulta consulta) {
+  void adicionarConsulta(Consulta consulta) {
     consultas.add(consulta);
     notifyListeners();
   }
@@ -36,10 +35,34 @@ class ConsultasContext extends ChangeNotifier {
 void main() {
   runApp(
     ChangeNotifierProvider(
-      create:(context) => ConsultasContext(),
+      create: (context) => ConsultasContext(),
       child: MaterialApp(
-        home: ConsultasPage();
-      )
-    )
+        home: ConsultasPage(),
+      ),
+    ),
   );
+}
+
+class ConsultasPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Consultas'),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(16),
+        color: Colors.blue[200],
+        child: Column(
+          children: [
+            Text(
+              'Consultas:',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            // Restante do seu código para a página de consultas
+          ],
+        ),
+      ),
+    );
+  }
 }
