@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:your_app/contexts/consultas.dart';
+import 'package:your_app/contexts/ConsultasContext.dart';
 
 class EditarConsultaPage extends StatefulWidget {
   @override
