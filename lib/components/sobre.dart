@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:your_app/resources/sobre_data.dart';
-import 'package:your_app/resources/images.dart';
 
 class SobrePage extends StatelessWidget {
   @override
