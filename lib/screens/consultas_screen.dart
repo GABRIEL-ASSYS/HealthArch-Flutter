@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
 
-class consultas_screen extends StatefulWidget {
+class ConsultasScreen extends StatefulWidget {
   @override
-  _consultas_screenState createState() => _consultas_screenState();
+  _ConsultasScreenState createState() => _ConsultasScreenState();
 }
 
-class _consultas_screenState extends State<consultas_screen> {
+class _ConsultasScreenState extends State<ConsultasScreen> {
   List<Map<String, dynamic>> consultas = [];
-  String titulo = '';
-  String descricao = '';
-  String horaData = '';
-  String nomeCliente = '';
-  String nomeProfissional = '';
+  TextEditingController tituloController = TextEditingController();
+  TextEditingController descricaoController = TextEditingController();
+  TextEditingController horaDataController = TextEditingController();
+  TextEditingController nomeClienteController = TextEditingController();
+  TextEditingController nomeProfissionalController = TextEditingController();
 
   void adicionarConsulta() {
     setState(() {
       consultas.add({
         'id': consultas.length + 1,
-        'titulo': titulo,
-        'descricao': descricao,
-        'horaData': horaData,
-        'nomeCliente': nomeCliente,
-        'nomeProfissional': nomeProfissional,
+        'titulo': tituloController.text,
+        'descricao': descricaoController.text,
+        'horaData': horaDataController.text,
+        'nomeCliente': nomeClienteController.text,
+        'nomeProfissional': nomeProfissionalController.text,
       });
 
-      titulo = '';
-      descricao = '';
-      horaData = '';
-      nomeCliente = '';
-      nomeProfissional = '';
+      tituloController.clear();
+      descricaoController.clear();
+      horaDataController.clear();
+      nomeClienteController.clear();
+      nomeProfissionalController.clear();
     });
   }
 
@@ -49,59 +49,34 @@ class _consultas_screenState extends State<consultas_screen> {
             ),
             SizedBox(height: 16.0),
             TextField(
+              controller: tituloController,
               decoration: InputDecoration(
                 labelText: 'Título:',
               ),
-              onChanged: (value) {
-                setState(() {
-                  titulo = value;
-                });
-              },
-              value: titulo,
             ),
             TextField(
+              controller: descricaoController,
               decoration: InputDecoration(
                 labelText: 'Descrição:',
               ),
-              onChanged: (value) {
-                setState(() {
-                  descricao = value;
-                });
-              },
-              value: descricao,
             ),
             TextField(
+              controller: horaDataController,
               decoration: InputDecoration(
                 labelText: 'Data e Hora:',
               ),
-              onChanged: (value) {
-                setState(() {
-                  horaData = value;
-                });
-              },
-              value: horaData,
             ),
             TextField(
+              controller: nomeClienteController,
               decoration: InputDecoration(
                 labelText: 'Nome do Cliente:',
               ),
-              onChanged: (value) {
-                setState(() {
-                  nomeCliente = value;
-                });
-              },
-              value: nomeCliente,
             ),
             TextField(
+              controller: nomeProfissionalController,
               decoration: InputDecoration(
                 labelText: 'Nome do Profissional:',
               ),
-              onChanged: (value) {
-                setState(() {
-                  nomeProfissional = value;
-                });
-              },
-              value: nomeProfissional,
             ),
             SizedBox(height: 16.0),
             ElevatedButton(
