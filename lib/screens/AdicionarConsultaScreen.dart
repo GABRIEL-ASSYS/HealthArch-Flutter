@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AdicionarConsultaScreen extends StatefulWidget {
   @override
@@ -12,9 +13,22 @@ class _AdicionarConsultaScreenState extends State<AdicionarConsultaScreen> {
   TextEditingController nomeClienteController = TextEditingController();
   TextEditingController nomeProfissionalController = TextEditingController();
 
-  void adicionarConsulta() {
-    // Lógica para adicionar a consulta aqui
-    // Pode ser semelhante à lógica em ConsultasScreen
+  void adicionarConsulta() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    await firestore.collection('consultas').add({
+      'titulo': tituloController.text,
+      'descricao': descricaoController.text,
+      'horaData': horaDataController.text,
+      'nomeCliente': nomeClienteController.text,
+      'nomeProfissional': nomeProfissionalController.text,
+    });
+
+    tituloController.clear();
+    descricaoController.clear();
+    horaDataController.clear();
+    nomeClienteController.clear();
+    nomeProfissionalController.clear();
   }
 
   @override
@@ -33,41 +47,6 @@ class _AdicionarConsultaScreenState extends State<AdicionarConsultaScreen> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 16.0),
-            TextField(
-              controller: tituloController,
-              decoration: InputDecoration(
-                labelText: 'Título:',
-              ),
-            ),
-            TextField(
-              controller: descricaoController,
-              decoration: InputDecoration(
-                labelText: 'Descrição:',
-              ),
-            ),
-            TextField(
-              controller: horaDataController,
-              decoration: InputDecoration(
-                labelText: 'Data e Hora:',
-              ),
-            ),
-            TextField(
-              controller: nomeClienteController,
-              decoration: InputDecoration(
-                labelText: 'Nome do Cliente:',
-              ),
-            ),
-            TextField(
-              controller: nomeProfissionalController,
-              decoration: InputDecoration(
-                labelText: 'Nome do Profissional:',
-              ),
-            ),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: adicionarConsulta,
-              child: Text('Cadastrar'),
-            ),
           ],
         ),
       ),
