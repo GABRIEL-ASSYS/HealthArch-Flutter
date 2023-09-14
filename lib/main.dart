@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:prova_01/screens/ConsultasScreen.dart';
+import 'package:firebase_core/firebase_core.dart'; // Importe o Firebase
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(); // Inicialize o Firebase
   runApp(const MyApp());
 }
 
