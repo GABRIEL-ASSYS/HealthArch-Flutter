@@ -86,19 +86,55 @@ class _ConsultasScreenState extends State<ConsultasScreen> {
                     elevation: 3.0,
                     margin: EdgeInsets.symmetric(vertical: 8.0),
                     child: ListTile(
-                      title: Text('ID: ${consulta['id']}'),
+                      title: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'ID: ${consulta['id']}',
+                          style: TextStyle(fontSize: 18.0),
+                        ),
+                      ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Título: ${consulta['titulo']}'),
-                          Text('Descrição: ${consulta['descricao']}'),
-                          Text('Data e Hora: ${consulta['horaData']}'),
-                          Text('Nome do Cliente: ${consulta['nomeCliente']}'),
-                          Text('Nome do Profissional: ${consulta['nomeProfissional']}'),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Título: ${consulta['titulo']}',
+                              style: TextStyle(fontSize: 16.0),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Descrição: ${consulta['descricao']}',
+                              style: TextStyle(fontSize: 16.0),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Data e Hora: ${consulta['horaData']}',
+                              style: TextStyle(fontSize: 16.0),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Nome do Cliente: ${consulta['nomeCliente']}',
+                              style: TextStyle(fontSize: 16.0),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Nome do Profissional: ${consulta['nomeProfissional']}',
+                              style: TextStyle(fontSize: 16.0),
+                            ),
+                          ),
                         ],
                       ),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
+                      trailing: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           ElevatedButton(
                             onPressed: () {
@@ -108,7 +144,6 @@ class _ConsultasScreenState extends State<ConsultasScreen> {
                             },
                             child: Text('Excluir'),
                           ),
-                          SizedBox(width: 8.0),
                           ElevatedButton(
                             onPressed: () {
                             },
