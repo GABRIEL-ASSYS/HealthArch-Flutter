@@ -76,84 +76,50 @@ class _ConsultasScreenState extends State<ConsultasScreen> {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 16.0),
-              ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: consultas.length,
-                itemBuilder: (context, index) {
-                  final consulta = consultas[index];
+              Column(
+                children: consultas.map((consulta) {
                   return Card(
                     elevation: 3.0,
                     margin: EdgeInsets.symmetric(vertical: 8.0),
-                    child: ListTile(
-                      title: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'ID: ${consulta['id']}',
-                          style: TextStyle(fontSize: 18.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ListTile(
+                          title: Text('ID: ${consulta['id']}'),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Título: ${consulta['titulo']}'),
+                              Text('Descrição: ${consulta['descricao']}'),
+                              Text('Data e Hora: ${consulta['horaData']}'),
+                              Text('Nome do Cliente: ${consulta['nomeCliente']}'),
+                              Text('Nome do Profissional: ${consulta['nomeProfissional']}'),
+                            ],
+                          ),
                         ),
-                      ),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Título: ${consulta['titulo']}',
-                              style: TextStyle(fontSize: 16.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  consultas.remove(consulta);
+                                });
+                              },
+                              child: Text('Excluir'),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Descrição: ${consulta['descricao']}',
-                              style: TextStyle(fontSize: 16.0),
+                            SizedBox(width: 8.0),
+                            ElevatedButton(
+                              onPressed: () {
+                              },
+                              child: Text('Editar'),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Data e Hora: ${consulta['horaData']}',
-                              style: TextStyle(fontSize: 16.0),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Nome do Cliente: ${consulta['nomeCliente']}',
-                              style: TextStyle(fontSize: 16.0),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Nome do Profissional: ${consulta['nomeProfissional']}',
-                              style: TextStyle(fontSize: 16.0),
-                            ),
-                          ),
-                        ],
-                      ),
-                      trailing: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              setState(() {
-                                consultas.removeAt(index);
-                              });
-                            },
-                            child: Text('Excluir'),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                            },
-                            child: Text('Editar'),
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
+                      ],
                     ),
                   );
-                },
+                }).toList(),
               ),
               SizedBox(height: 16.0),
               FloatingActionButton(
