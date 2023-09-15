@@ -29,9 +29,11 @@ class _AdicionarConsultaScreenState extends State<AdicionarConsultaScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(
-                  'Adicionar Consulta:',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                Center(
+                  child: Text(
+                    'Adicionar Consulta:',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
                 ),
                 SizedBox(height: 16.0),
                 Form(
@@ -61,9 +63,11 @@ class _AdicionarConsultaScreenState extends State<AdicionarConsultaScreen> {
                   ),
                 ),
                 SizedBox(height: 16.0),
-                ElevatedButton(
-                  onPressed: adicionarConsulta,
-                  child: Text('Cadastrar'),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: adicionarConsulta,
+                    child: Text('Cadastrar'),
+                  ),
                 ),
               ],
             ),
