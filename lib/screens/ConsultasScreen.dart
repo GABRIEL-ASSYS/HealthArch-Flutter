@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prova_01/screens/AdicionarConsultaScreen.dart';
+import 'package:prova_01/screens/LoginScreen.dart';
 
 class ConsultasScreen extends StatefulWidget {
   @override
@@ -129,6 +130,16 @@ class _ConsultasScreenState extends State<ConsultasScreen> {
                   );
                 },
                 child: Icon(Icons.add),
+              ),
+              SizedBox(height: 16.0),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                  );
+                },
+                child: Text('Ir para Login'),
               ),
               SizedBox(height: 16.0),
             ],
