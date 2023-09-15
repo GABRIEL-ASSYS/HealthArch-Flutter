@@ -66,69 +66,74 @@ class _ConsultasScreenState extends State<ConsultasScreen> {
         title: Text('Consultas'),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              'Consultas:',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 16.0),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: consultas.length,
-              itemBuilder: (context, index) {
-                final consulta = consultas[index];
-                return Card(
-                  elevation: 3.0,
-                  margin: EdgeInsets.symmetric(vertical: 8.0),
-                  child: ListTile(
-                    title: Text('ID: ${consulta['id']}'),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Título: ${consulta['titulo']}'),
-                        Text('Descrição: ${consulta['descricao']}'),
-                        Text('Data e Hora: ${consulta['horaData']}'),
-                        Text('Nome do Cliente: ${consulta['nomeCliente']}'),
-                        Text('Nome do Profissional: ${consulta['nomeProfissional']}'),
-                      ],
+        child: Container(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Consultas:',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 16.0),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: consultas.length,
+                itemBuilder: (context, index) {
+                  final consulta = consultas[index];
+                  return Card(
+                    elevation: 3.0,
+                    margin: EdgeInsets.symmetric(vertical: 8.0),
+                    child: ListTile(
+                      title: Text('ID: ${consulta['id']}'),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Título: ${consulta['titulo']}'),
+                          Text('Descrição: ${consulta['descricao']}'),
+                          Text('Data e Hora: ${consulta['horaData']}'),
+                          Text('Nome do Cliente: ${consulta['nomeCliente']}'),
+                          Text('Nome do Profissional: ${consulta['nomeProfissional']}'),
+                        ],
+                      ),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                consultas.removeAt(index);
+                              });
+                            },
+                            child: Text('Excluir'),
+                          ),
+                          SizedBox(width: 8.0),
+                          ElevatedButton(
+                            onPressed: () {
+                            },
+                            child: Text('Editar'),
+                          ),
+                        ],
+                      ),
                     ),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              consultas.removeAt(index);
-                            });
-                          },
-                          child: Text('Excluir'),
-                        ),
-                        SizedBox(width: 8.0),
-                        ElevatedButton(
-                          onPressed: () {
-                          },
-                          child: Text('Editar'),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
-          ],
+                  );
+                },
+              ),
+              SizedBox(height: 16.0),
+              FloatingActionButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AdicionarConsultaScreen()),
+                  );
+                },
+                child: Icon(Icons.add),
+              ),
+              SizedBox(height: 16.0),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AdicionarConsultaScreen()),
-          );
-        },
-        child: Icon(Icons.add),
       ),
     );
   }
