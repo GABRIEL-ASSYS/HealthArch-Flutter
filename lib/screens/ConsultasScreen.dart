@@ -97,8 +97,8 @@ class _ConsultasScreenState extends State<ConsultasScreen> {
                           Text('Nome do Profissional: ${consulta['nomeProfissional']}'),
                         ],
                       ),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
+                      trailing: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           ElevatedButton(
                             onPressed: () {
@@ -108,7 +108,6 @@ class _ConsultasScreenState extends State<ConsultasScreen> {
                             },
                             child: Text('Excluir'),
                           ),
-                          SizedBox(width: 8.0),
                           ElevatedButton(
                             onPressed: () {
                             },
