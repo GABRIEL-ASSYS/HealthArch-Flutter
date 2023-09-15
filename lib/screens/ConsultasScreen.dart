@@ -7,7 +7,33 @@ class ConsultasScreen extends StatefulWidget {
 }
 
 class _ConsultasScreenState extends State<ConsultasScreen> {
-  List<Map<String, dynamic>> consultas = [];
+  List<Map<String, dynamic>> consultas = [
+    {
+      'id': 1,
+      'titulo': 'Consulta de Rotina',
+      'descricao': 'Exame de rotina e verificação de saúde.',
+      'horaData': '10/09/2023 09:00 AM',
+      'nomeCliente': 'Maria Silva',
+      'nomeProfissional': 'Dr. João'
+    },
+    {
+      'id': 2,
+      'titulo': 'Consulta Odontológica',
+      'descricao': 'Limpeza e exame odontológico de rotina.',
+      'horaData': '12/09/2023 02:30 PM',
+      'nomeCliente': 'Pedro Oliveira',
+      'nomeProfissional': 'Dra. Ana'
+    },
+    {
+      'id': 3,
+      'titulo': 'Consulta de Cardiologia',
+      'descricao': 'Exame cardíaco e monitoramento.',
+      'horaData': '15/09/2023 11:15 AM',
+      'nomeCliente': 'Joana Santos',
+      'nomeProfissional': 'Dr. Carlos'
+    },
+  ];
+
   TextEditingController tituloController = TextEditingController();
   TextEditingController descricaoController = TextEditingController();
   TextEditingController horaDataController = TextEditingController();
@@ -49,6 +75,49 @@ class _ConsultasScreenState extends State<ConsultasScreen> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 16.0),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: consultas.length,
+              itemBuilder: (context, index) {
+                final consulta = consultas[index];
+                return Card(
+                  elevation: 3.0,
+                  margin: EdgeInsets.symmetric(vertical: 8.0),
+                  child: ListTile(
+                    title: Text('ID: ${consulta['id']}'),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Título: ${consulta['titulo']}'),
+                        Text('Descrição: ${consulta['descricao']}'),
+                        Text('Data e Hora: ${consulta['horaData']}'),
+                        Text('Nome do Cliente: ${consulta['nomeCliente']}'),
+                        Text('Nome do Profissional: ${consulta['nomeProfissional']}'),
+                      ],
+                    ),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              consultas.removeAt(index);
+                            });
+                          },
+                          child: Text('Excluir'),
+                        ),
+                        SizedBox(width: 8.0),
+                        ElevatedButton(
+                          onPressed: () {
+                          },
+                          child: Text('Editar'),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
