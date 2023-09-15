@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AdicionarConsultaScreen extends StatefulWidget {
   @override
@@ -13,22 +12,7 @@ class _AdicionarConsultaScreenState extends State<AdicionarConsultaScreen> {
   TextEditingController nomeClienteController = TextEditingController();
   TextEditingController nomeProfissionalController = TextEditingController();
 
-  void adicionarConsulta() async {
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-    await firestore.collection('consultas').add({
-      'titulo': tituloController.text,
-      'descricao': descricaoController.text,
-      'horaData': horaDataController.text,
-      'nomeCliente': nomeClienteController.text,
-      'nomeProfissional': nomeProfissionalController.text,
-    });
-
-    tituloController.clear();
-    descricaoController.clear();
-    horaDataController.clear();
-    nomeClienteController.clear();
-    nomeProfissionalController.clear();
+  void adicionarConsulta() {
   }
 
   @override
@@ -47,6 +31,10 @@ class _AdicionarConsultaScreenState extends State<AdicionarConsultaScreen> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 16.0),
+            ElevatedButton(
+              onPressed: adicionarConsulta,
+              child: Text('Cadastrar'),
+            ),
           ],
         ),
       ),
