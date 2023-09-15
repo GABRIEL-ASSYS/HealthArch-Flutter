@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:prova_01/screens/AdicionarConsultaScreen.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ConsultasScreen extends StatefulWidget {
   @override
@@ -15,17 +14,7 @@ class _ConsultasScreenState extends State<ConsultasScreen> {
   TextEditingController nomeClienteController = TextEditingController();
   TextEditingController nomeProfissionalController = TextEditingController();
 
-  void adicionarConsulta() async {
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-    await firestore.collection('consultas').add({
-      'titulo': tituloController.text,
-      'descricao': descricaoController.text,
-      'horaData': horaDataController.text,
-      'nomeCliente': nomeClienteController.text,
-      'nomeProfissional': nomeProfissionalController.text,
-    });
-
+  void adicionarConsulta() {
     setState(() {
       consultas.add({
         'id': consultas.length + 1,
