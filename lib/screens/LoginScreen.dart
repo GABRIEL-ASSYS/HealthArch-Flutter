@@ -24,14 +24,26 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16.0),
-                  Text('Email:'),
+                  Text(
+                    'Email:',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   TextField(
                     decoration: InputDecoration(
                       hintText: 'Digite seu Email',
                     ),
                   ),
                   SizedBox(height: 16.0),
-                  Text('Senha:'),
+                  Text(
+                    'Senha:',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   TextField(
                     obscureText: true,
                     decoration: InputDecoration(
