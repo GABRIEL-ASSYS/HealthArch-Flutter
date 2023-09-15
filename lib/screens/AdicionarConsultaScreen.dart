@@ -31,6 +31,33 @@ class _AdicionarConsultaScreenState extends State<AdicionarConsultaScreen> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 16.0),
+            Form(
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: tituloController,
+                    decoration: InputDecoration(labelText: 'Título'),
+                  ),
+                  TextFormField(
+                    controller: descricaoController,
+                    decoration: InputDecoration(labelText: 'Descrição'),
+                  ),
+                  TextFormField(
+                    controller: horaDataController,
+                    decoration: InputDecoration(labelText: 'Data e Hora'),
+                  ),
+                  TextFormField(
+                    controller: nomeClienteController,
+                    decoration: InputDecoration(labelText: 'Nome do Cliente'),
+                  ),
+                  TextFormField(
+                    controller: nomeProfissionalController,
+                    decoration: InputDecoration(labelText: 'Nome do Profissional'),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: adicionarConsulta,
               child: Text('Cadastrar'),
