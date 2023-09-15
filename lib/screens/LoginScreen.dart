@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nome_do_seu_app/screens/CadastroScreen.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -55,6 +56,16 @@ class LoginScreen extends StatelessWidget {
                     onPressed: () {
                     },
                     child: Text('Entrar'),
+                  ),
+                  SizedBox(height: 16.0),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CadastroScreen()),
+                      );
+                    },
+                    child: Text('Ir para Cadastro'),
                   ),
                 ],
               ),
